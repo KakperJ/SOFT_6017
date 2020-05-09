@@ -1,9 +1,16 @@
 from datetime import date
+import os
 
 class ModuleManager:
 
     def __init__(self, module_file):
         self.modules = []
+
+        #create file if it doesn't exist :)
+        if not os.path.exists(module_file):
+            with open(module_file, 'w+') as file:
+                pass
+
 
         with open(module_file, 'r') as file:
             for row in file:
@@ -12,6 +19,9 @@ class ModuleManager:
                 self.modules.append(module)
 
 
+
+
+    #Gets the modules
     def getModulesByLecturer(self, lecturer):
         list = []
         for module in self.modules:
@@ -19,7 +29,8 @@ class ModuleManager:
                 list.append(module)
         return list
 
-
+#this is a module
+#Holds all info about modules
 class Module:
 
     def __init__(self, code, name, lecturer):
@@ -28,7 +39,13 @@ class Module:
         self.lecturer = lecturer
         self.students = []
 
+        #create file if it doesn't exist :)
+        if not os.path.exists(code + ".txt"):
+            with open(code + ".txt", 'w+') as file:
+                pass
 
+
+        #Adds students to the module
         with open(code + ".txt", 'r+') as f:
             for row in f:
                 student_details = row.split(",")
@@ -41,7 +58,7 @@ class Module:
         else:
             self.classes = 0
 
-
+    #get attendance for best, low, and non attenders
     def getAttendance(self):
         best_attenders = []
         low_attenders = []
@@ -75,6 +92,7 @@ class Module:
         return avg_attendance, best_attenders, low_attenders, non_attenders
 
 
+    #updates the module information to a file
     def update(self):
         with open(self.code + ".txt", 'w+') as file:
             for student in self.students:
@@ -82,10 +100,12 @@ class Module:
 
         print(self.code + ".txt updated with latest attendance records")
 
+    #Writes the module statistics to a file
     def save_statistics(self, module_statistics):
         with open(self.code + "_" + str(date.today()), 'w+') as f:
             f.write(module_statistics)
 
+    #Generates the statistics for the module
     def generate_statistics(self):
         avg_attendance, best_attenders, low_attenders, non_attenders = self.getAttendance()
 
@@ -111,7 +131,7 @@ class Module:
 
         return module_statistics
 
-
+#Holds information on students
 class Student:
 
     def __init__(self, name, days_present, days_absent, days_excused):
