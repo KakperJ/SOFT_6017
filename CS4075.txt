@@ -1,3 +1,3 @@
-Filip fry,10,15,0
-John Travolta,5,0,5
-Jerry Mcmahon,7,4,2
+Adam McCarthy,0,0,0
+Mary Travolta,0,0,0
+Joey Mcmahon,0,0,0

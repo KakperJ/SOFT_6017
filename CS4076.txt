@@ -1,3 +1,0 @@
-Jerry fry,5,15,3
-joey Travolta,7,0,5
-Mary Mcmahon,7,8,5

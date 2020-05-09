@@ -1,3 +1,4 @@
 CS4075,Computer Progamming 1,anna
 CS4076,Computer Programming 2,john
 CS4077,Artificial Intelligence 1,anna
+CS4078,Computer Graphics,john

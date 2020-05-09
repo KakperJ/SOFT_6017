@@ -11,6 +11,7 @@ def checkLogin():
             user = details[0]
             pw = details[1].replace("\n", "")
 
+            #Return True if name and password is found in file
             if user == name and password == pw:
                 return True, name
 
