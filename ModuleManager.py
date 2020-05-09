@@ -39,12 +39,32 @@ class Module:
             self.classes = 0
 
         self.best_attenders = []
+        self.low_attenders = []
+        self.non_attenders = []
 
         avg = 0
         best = 0
+
+        #Calculate best, low and non attenders
         for student in self.students:
             avg += student.present
 
+            #Add best students to list
+            if student.present > best:
+                self.best_attenders = []
+                best = student.present
+            if student.present == best:
+                self.best_attenders.append(student)
+
+            #Non attenders if they've never been present
+            if student.present == 0:
+                self.non_attenders.append(student)
+
+            #Low attenders if they've been present less than 70%
+            if (student.present / self.classes) < 0.7:
+                self.low_attenders.append(student)
+
+        #Calculate average attendance
         self.avg_attendance = avg / len(self.students)
 
 

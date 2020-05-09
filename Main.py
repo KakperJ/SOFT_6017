@@ -47,12 +47,20 @@ def generateStatistics(name):
 
     choice = int(input(""))
 
-    if 1 < choice <= len(modules):
-        module = modules[choice]
+    if 1 <= choice <= len(modules):
+        module = modules[choice - 1]
         print("Module: ", module.code)
         print("Number of students: ", len(module.students))
         print("Number of Classes: ", module.classes)
-
-    pass
+        print("Average Attendance: ", round(module.avg_attendance), " days")
+        print("Low Attenders: under 70.0%")
+        for student in module.low_attenders:
+            print("\t", student.name)
+        print("Non Attenders:")
+        for student in module.non_attenders:
+            print("\t", student.name)
+        print("Best Attenders:")
+        for student in module.best_attenders:
+            print("\t", student.name)
 
 main()

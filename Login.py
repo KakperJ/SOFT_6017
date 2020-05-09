@@ -1,5 +1,5 @@
 #checks a username and password
-def checkLogin(name, password):
+def checkLogin():
 
     name = input("Name: ")
     password = input("Password: ")
